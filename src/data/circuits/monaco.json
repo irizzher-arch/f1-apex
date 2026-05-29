@@ -1,0 +1,66 @@
+{
+  "stats": {
+    "raceDistance": "260.286 KM",
+    "circuitLength": "3.337 KM",
+    "laps": "78",
+    "lapRecord": {
+      "time": "1:12.909",
+      "driver": "Lewis Hamilton",
+      "year": "2021"
+    }
+  },
+  "elevation": [
+    { "name": "T1", "elevation": 15 },
+    { "name": "T3", "elevation": 42 },
+    { "name": "T4", "elevation": 42 },
+    { "name": "T6", "elevation": 30 },
+    { "name": "T8", "elevation": 4 },
+    { "name": "T10", "elevation": 3 },
+    { "name": "T15", "elevation": 12 },
+    { "name": "T19", "elevation": 15 }
+  ],
+  "elevationChange": 40,
+  "seriesSpeed": {
+    "f1": { "speed": "166.4", "time": "1:12.178" },
+    "f2": { "speed": "148.2", "time": "1:21.053" },
+    "f3": { "speed": "135.0", "time": "1:28.910" }
+  },
+  "characterStats": {
+    "gForce": { "value": "3.6G", "sub": "AT TURN 15 FOR 1.2s" },
+    "gearChanges": { "value": "50", "sub": "GEAR CHANGES PER LAP" },
+    "topSpeed": { "value": "290 KPH", "sub": "HIGHEST RECORDED" },
+    "overtakes": { "value": "13", "sub": "(LAST SEASON)" },
+    "trackWidth": { "value": "9m", "sub": "AVERAGE WIDTH" }
+  },
+  "analystNote": "Monaco remains the ultimate test of driver precision. With the <white>lowest average speed</white> and <white>narrowest track width</white> on the calendar, overtaking is notoriously difficult. Setup requires <teal>maximum aerodynamic downforce</teal> and soft suspension to ride the bumps and curbs. Qualifying position is the strongest predictor of race victory here.",
+  "difficultyRatings": {
+    "physical": 3,
+    "technical": 5,
+    "overtaking": 5
+  },
+  "tyreSelection": ["C3", "C4", "C5"],
+  "strategyStats": {
+    "safetyCarProb": 82,
+    "safetyCarAvgLaps": 8,
+    "pitLaneLength": "301M",
+    "fastestPit": { "time": "2.12s", "team": "Red Bull", "year": "2023" },
+    "poleWins": { "wins": 31, "total": 69 },
+    "wetRaceProb": 20,
+    "fuelEffect": "0.18 SEC/10KG",
+    "fuelConsumption": "1.32 KG/LAP",
+    "fullThrottle": 45,
+    "downforce": 10,
+    "brakeWear": 7,
+    "tyreWear": 2,
+    "avgPitStops": 1.1,
+    "undercutWindow": "3 LAPS",
+    "tyreDelta": "+0.6s/LAP",
+    "pitLaneTimeLoss": "~22s"
+  },
+  "speedAnnotations": [
+    { "turn": "T1", "speed": "105", "gear": "2" },
+    { "turn": "T6", "speed": "48", "gear": "1" },
+    { "turn": "T9", "speed": "290", "gear": "7" },
+    { "turn": "T15", "speed": "170", "gear": "4" }
+  ]
+}
