@@ -1,0 +1,23 @@
+{
+  "fastestPitStop": {
+    "time": "2.00",
+    "team": "Ferrari",
+    "driver": "Hamilton",
+    "round": 3,
+    "country": "Japan"
+  },
+  "crashDamage": {
+    "total": 8744000,
+    "sinceLastRace": 1501000
+  },
+  "usedElements": {
+    "total": 303,
+    "sinceLastRace": 4,
+    "percentageChange": 4.01
+  },
+  "techUpgrades": {
+    "total": 167,
+    "sinceLastRace": 4,
+    "percentageChange": 15.98
+  }
+}
