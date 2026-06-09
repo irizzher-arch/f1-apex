@@ -114,7 +114,7 @@ export const TrackFactfilePage = () => {
             <div className="w-full lg:w-[65%] flex flex-col gap-6">
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-1 min-h-[300px]">
-                  <CircuitMap speedAnnotations={staticData.speedAnnotations} />
+                  <CircuitMap circuitId={ergast.circuitId} />
                 </div>
                 
                 {/* Character Stat Pills (Vertical Stack) */}
@@ -139,7 +139,7 @@ export const TrackFactfilePage = () => {
           <div className="w-full bg-white/[0.02] border border-white/[0.055] border-l-[3px] border-l-[#00D2BE] rounded-xl p-8 flex flex-col md:flex-row gap-8">
             <div className="flex-1 flex flex-col">
               <div className="self-start bg-[#00D2BE]/10 border border-[#00D2BE]/30 rounded-md px-3 py-1 mb-4">
-                <span className="font-mono text-[10px] text-[#00D2BE] uppercase tracking-wide">ANALYST NOTE</span>
+                <span className="font-mono text-[10px] text-[#00D2BE] uppercase tracking-wide">Wikipedia Circuit Summary</span>
               </div>
               <p className="font-body text-[14px] text-white/70 leading-[1.85] m-0" dangerouslySetInnerHTML={{ __html: staticData.analystNote.replace(/<(white|teal)>/g, (m, g) => `<span class="${g === 'white' ? 'text-white font-semibold' : 'text-[#00D2BE]'}">`).replace(/<\/(white|teal)>/g, '</span>') }} />
             </div>

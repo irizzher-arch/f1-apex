@@ -16,7 +16,7 @@ import { Ch12TeamsAndCars } from '@/components/guide/chapters/Ch12TeamsAndCars';
 import { Ch13TimingTower } from '@/components/guide/chapters/Ch13TimingTower';
 import { Ch14Strategy } from '@/components/guide/chapters/Ch14Strategy';
 import { Ch15Glossary } from '@/components/guide/chapters/Ch15Glossary';
-import { CompletionScreen } from '@/components/guide/CompletionScreen';
+import { CompletionCredential } from '@/components/guide/CompletionCredential';
 
 export const BeginnerGuidePage = () => {
   const [activeChapter, setActiveChapter] = useState('ch01');
@@ -67,7 +67,7 @@ export const BeginnerGuidePage = () => {
       </main>
 
       {showCompletionScreen && (
-        <CompletionScreen onClose={() => setShowCompletionScreen(false)} />
+        <CompletionCredential onClose={() => setShowCompletionScreen(false)} />
       )}
     </div>
   );

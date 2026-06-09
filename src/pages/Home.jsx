@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { HeroBanner } from '@/components/layout/HeroBanner';
+import { useNavigate } from 'react-router-dom';
 import { useStore } from '@/store/useStore';
 import { useErgast } from '@/hooks/useErgast';
 import { DRIVER_IMAGES, TEAM_LOGOS } from '@/utils/assets';
 
 export const Home = () => {
+  const navigate = useNavigate();
   const setActiveTab = useStore(state => state.setActiveTab);
   const { fetchResults } = useErgast();
   const [latestRace, setLatestRace] = useState(null);
@@ -29,7 +31,7 @@ export const Home = () => {
       </div>
 
       {/* Content Below Hero */}
-      <div className="flex flex-col gap-24 py-24 w-full max-w-7xl mx-auto px-6">
+      <div className="flex flex-col gap-24 pt-24 pb-24 w-full max-w-7xl mx-auto px-6">
         
         {/* Section 2: Latest Race Highlight */}
         {latestRace && (
@@ -115,6 +117,32 @@ export const Home = () => {
           </div>
           <div className="absolute top-[-20%] right-[30%] w-[1px] h-[150%] bg-white/10 transform rotate-[30deg] z-10" />
           <div className="absolute top-[-20%] right-[32%] w-[3px] h-[150%] bg-f1-red/20 transform rotate-[30deg] z-10" />
+        </motion.section>
+
+        {/* Season Grid Nav Cards (Moved under Beginner Guide) */}
+        <motion.section 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          <div onClick={() => navigate('/drivers')} className="group cursor-pointer relative h-[300px] rounded-3xl overflow-hidden border border-white/10 shadow-lg">
+            <img src="https://media.formula1.com/image/upload/t_16by9South/f_auto/q_auto/v1677244985/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Miami.jpg" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-500 grayscale" alt="Drivers" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+            <div className="absolute bottom-8 left-8">
+              <h3 className="text-3xl font-heading font-black text-white uppercase drop-shadow-md">The Drivers</h3>
+              <p className="text-text-secondary font-mono text-sm mt-1">Explore the current grid lineup.</p>
+            </div>
+          </div>
+          <div onClick={() => navigate('/teams')} className="group cursor-pointer relative h-[300px] rounded-3xl overflow-hidden border border-white/10 shadow-lg">
+            <img src="https://media.formula1.com/image/upload/t_16by9South/f_auto/q_auto/v1677244985/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Monaco.jpg" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-500 grayscale" alt="Teams" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+            <div className="absolute bottom-8 left-8">
+              <h3 className="text-3xl font-heading font-black text-white uppercase drop-shadow-md">The Teams</h3>
+              <p className="text-text-secondary font-mono text-sm mt-1">Discover constructors and cars.</p>
+            </div>
+          </div>
         </motion.section>
 
         {/* Season Stats Cards */}

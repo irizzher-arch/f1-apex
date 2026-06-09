@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useStore } from '@/store/useStore';
 import { defaultCircuit } from '@/data/circuits/defaultCircuit';
+import { circuitStatsMap } from '@/utils/circuitStatsMap';
 
 const BASE_URL = 'https://api.jolpi.ca/ergast/f1';
 
@@ -45,6 +46,49 @@ export const useCircuitData = (circuitId) => {
           staticData = module.default || module;
         } catch (e) {
           console.warn(`No static data found for ${circuitId}, using default fallback`);
+        }
+
+        // 4. Fetch Wikipedia Summary for the real circuit information!
+        let wikiExtract = null;
+        if (ergastCircuit.url) {
+          try {
+            const wikiTitle = ergastCircuit.url.split('/').pop();
+            const wikiRes = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${wikiTitle}`);
+            if (wikiRes.ok) {
+              const wikiData = await wikiRes.json();
+              if (wikiData.extract) {
+                wikiExtract = wikiData.extract;
+              }
+            }
+          } catch (e) {
+            console.warn("Failed to fetch Wikipedia data", e);
+          }
+        }
+
+        if (wikiExtract) {
+          staticData = {
+            ...staticData,
+            analystNote: wikiExtract
+          };
+        }
+
+        // 5. Override generic track stats with our real data map
+        const realStats = circuitStatsMap[circuitId];
+        if (realStats) {
+          staticData = {
+            ...staticData,
+            stats: {
+              ...staticData.stats,
+              raceDistance: realStats.distance,
+              circuitLength: realStats.length,
+              laps: realStats.laps,
+              lapRecord: {
+                time: realStats.record,
+                driver: realStats.recordDriver,
+                year: realStats.recordYear
+              }
+            }
+          };
         }
 
         if (isMounted) {

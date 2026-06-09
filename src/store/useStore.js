@@ -1,10 +1,16 @@
 import { create } from 'zustand';
 import { createH2HSlice } from './h2hSlice';
 import { createRacePaceSlice } from './racePaceSlice';
+import { createPitStopsSlice } from './pitStopsSlice';
+import { createLiveTimingSlice } from './liveTimingSlice';
+import { createHomeSlice } from './homeSlice';
 
 export const useStore = create((set, get) => ({
   ...createH2HSlice(set, get),
   ...createRacePaceSlice(set, get),
+  ...createPitStopsSlice(set, get),
+  ...createLiveTimingSlice(set, get),
+  ...createHomeSlice(set, get),
   // Session State
   session: {
     year: new Date().getFullYear(),
