@@ -21,7 +21,7 @@ export const TyreStintMap = () => {
   const { data: drivers } = useDriverData(sessionKey);
 
   const { totalLaps, mappedStints } = useMemo(() => {
-    if (!stints || !laps || !drivers) return { totalLaps: 0, mappedStints: [] };
+    if (!stints || !laps || laps.length === 0 || !drivers) return { totalLaps: 0, mappedStints: [] };
     
     const maxLap = Math.max(...laps.map(l => l.lap_number));
     

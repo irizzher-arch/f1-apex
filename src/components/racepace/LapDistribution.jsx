@@ -76,7 +76,7 @@ export const LapDistribution = () => {
           {stats.map(stat => (
             <div key={stat.driverNum} className="flex items-center gap-6 group/box relative">
               <span className="w-8 shrink-0 font-mono text-xs font-bold text-right" style={{ color: stat.tColor }}>
-                {stat.driver.name_acronym}
+                {stat.driver?.name_acronym || stat.driverNum}
               </span>
               
               <div className="flex-1 h-10 relative border-l border-r border-white/10">
@@ -104,7 +104,7 @@ export const LapDistribution = () => {
               
               {/* Tooltip */}
               <div className="absolute right-0 bottom-full mb-1 hidden group-hover/box:flex flex-col bg-[#111118] border border-white/10 p-3 rounded-lg text-xs font-mono text-white/70 shadow-2xl z-20">
-                <div className="text-white font-bold mb-1 border-b border-white/10 pb-1" style={{ color: stat.tColor }}>{stat.driver.name_acronym} Pace</div>
+                <div className="text-white font-bold mb-1 border-b border-white/10 pb-1" style={{ color: stat.tColor }}>{stat.driver?.name_acronym || stat.driverNum} Pace</div>
                 <div className="flex justify-between gap-4"><span>Min:</span> <span>{(stat.min).toFixed(3)}s</span></div>
                 <div className="flex justify-between gap-4"><span>Q1:</span> <span>{(stat.q1).toFixed(3)}s</span></div>
                 <div className="flex justify-between gap-4 text-white font-bold"><span>Median:</span> <span>{(stat.median).toFixed(3)}s</span></div>

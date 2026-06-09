@@ -79,11 +79,11 @@ export const PaceDeltaComparison = () => {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: d1Info.color }}></span>
-            <span className="font-mono text-[10px] font-bold text-white">{d1Info.name_acronym} Faster (Below)</span>
+            <span className="font-mono text-[10px] font-bold text-white">{d1Info?.name_acronym || d1} Faster (Below)</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: d2Info.color }}></span>
-            <span className="font-mono text-[10px] font-bold text-white">{d2Info.name_acronym} Faster (Above)</span>
+            <span className="font-mono text-[10px] font-bold text-white">{d2Info?.name_acronym || d2} Faster (Above)</span>
           </div>
           <div className="bg-white/10 px-3 py-1 rounded border border-white/10 ml-4">
             <span className="font-mono text-[10px] font-bold text-white">

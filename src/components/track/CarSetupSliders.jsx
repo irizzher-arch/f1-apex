@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
+import { getCarImageUrl } from '@/utils/carImageUrl';
 
 export const CarSetupSliders = ({ stats }) => {
   const ref = React.useRef(null);
@@ -13,21 +14,19 @@ export const CarSetupSliders = ({ stats }) => {
     { label: 'TYRE WEAR', value: stats.tyreWear, color: '#00D2BE' }
   ];
 
+  // Fetch a nice real F1 car render for the setup diagram (e.g. Mercedes 2024 model)
+  const carRenderUrl = getCarImageUrl(2024, 'mercedes');
+
   return (
     <div ref={ref} className="w-full flex flex-col gap-6">
       
-      {/* Car Silhouette Mock (using CSS/SVG shapes for a minimalist F1 side profile) */}
-      <div className="hidden md:flex justify-center mb-2 w-full h-[60px] opacity-60">
-        <svg viewBox="0 0 300 80" className="w-[240px] h-full drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
-          {/* Very basic F1 side profile proxy using paths */}
-          <path d="M40 60 L60 45 L100 45 L140 30 L170 30 L190 40 L240 40 L260 25 L280 25 L280 60 Z" fill="none" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
-          {/* Wheels */}
-          <circle cx="80" cy="60" r="15" fill="none" stroke="white" strokeWidth="2" />
-          <circle cx="230" cy="60" r="15" fill="none" stroke="white" strokeWidth="2" />
-          {/* Rear Wing */}
-          <line x1="40" y1="60" x2="40" y2="35" stroke="white" strokeWidth="1.5" />
-          <line x1="30" y1="35" x2="50" y2="35" stroke="white" strokeWidth="1.5" />
-        </svg>
+      {/* Real F1 Car Render */}
+      <div className="hidden md:flex justify-center mb-2 w-full h-[60px] opacity-80">
+        <img 
+          src={carRenderUrl} 
+          alt="F1 Car Setup Diagram" 
+          className="h-[120px] object-contain -translate-y-6 mix-blend-screen opacity-90 grayscale brightness-125"
+        />
       </div>
 
       <div className="flex flex-col gap-4">

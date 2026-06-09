@@ -48,9 +48,9 @@ const SpeedColumn = ({ title, trapKey, laps, drivers }) => {
           const isFastest = idx === 0;
           
           return (
-            <div key={item.driver.driver_number} className="flex items-center gap-3">
+            <div key={item.driver_number} className="flex items-center gap-3">
               <span className="w-8 shrink-0 font-mono text-[10px] font-bold text-right" style={{ color: item.tColor }}>
-                {item.driver.name_acronym || item.driver.driver_number}
+                {item.driver?.name_acronym || item.driver?.driver_number || item.driver_number}
               </span>
               
               <div className="flex-1 h-5 bg-white/5 rounded-sm relative flex items-center">
@@ -76,7 +76,7 @@ const SpeedColumn = ({ title, trapKey, laps, drivers }) => {
       </div>
       
       <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-1">
-        <div className="font-mono text-[10px] text-f1-red uppercase font-bold">PEAK: {maxOverall.toFixed(1)} KM/H — {data[0].driver.name_acronym}</div>
+        <div className="font-mono text-[10px] text-f1-red uppercase font-bold">PEAK: {maxOverall.toFixed(1)} KM/H — {data[0]?.driver?.name_acronym || data[0]?.driver_number}</div>
         <div className="font-mono text-[10px] text-white/40 uppercase">AVG FIELD: {avgOverall.toFixed(1)} KM/H</div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useStore } from '@/store/useStore';
 import { useLapData, useDriverData, useErgastResults, useStintData } from '@/hooks/useRacePaceQueries';
 import { teamColors } from '@/utils/teamColors';
+import { DRIVER_IMAGES } from '@/utils/assets';
 
 export const FastestLapHighlights = () => {
   const { racePace } = useStore();
@@ -57,7 +58,7 @@ export const FastestLapHighlights = () => {
     speed: officialFastestObj.FastestLap.AverageSpeed ? (officialFastestObj.FastestLap.AverageSpeed.speed + ' ' + officialFastestObj.FastestLap.AverageSpeed.units) : 'N/A',
     driver: officialFastestObj.Driver,
     constructor: officialFastestObj.Constructor,
-    img: `https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/v1/common/f1/2024/fallbackdriverright.webp`
+    img: DRIVER_IMAGES[officialFastestObj.Driver.driverId] || "https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/v1/common/f1/2026/fallbackdriverright.webp"
   } : null;
 
   return (

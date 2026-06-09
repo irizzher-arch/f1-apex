@@ -1,12 +1,13 @@
 import React from 'react';
 import { TEAM_COLORS } from '@/utils/constants';
+import { getDriverImageUrl } from '@/utils/driverImageUrl';
 
 export const DriverSpotlightCard = ({ driverName, team, stats }) => {
   const teamColor = TEAM_COLORS[team?.toLowerCase()] || '#E8002D';
   
-  // Use a generic placeholder image if no specific URL is provided
-  // In a real app we'd fetch this from OpenF1 or another media CDN
-  const imgUrl = `https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png`;
+  // Extract family name (last word) to use for the image slug
+  const familyName = driverName.split(' ').pop();
+  const imgUrl = getDriverImageUrl(2024, familyName);
 
   return (
     <div className="relative bg-white/[0.03] border border-white/[0.08] rounded-[14px] overflow-hidden flex flex-col group min-w-[280px] lg:min-w-0 flex-1">
